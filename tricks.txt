@@ -1,0 +1,73 @@
+-------------------------------------------------------
+
+
+// order_set
+
+// Common file
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+
+//order set
+typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> order_set;
+
+//multi order set
+typedef tree<int,null_type,less_equal<int>,rb_tree_tag, tree_order_statistics_node_update> order_set;
+//https://ideone.com/oamEm8
+
+//find_by_order(k)
+//order_of_key(k)
+
+-------------------------------------------------------
+
+
+// union join find
+
+vector<int> root(n);
+vector<int> rank(n,1);
+
+for(int i=0;i<n;i++)
+		root[i]=i;
+		
+int find(vector<int>& root,int x) {0
+    if (x == root[x]) {
+        return x;
+    }
+    return root[x] = find(root,root[x]);
+}
+
+void unionSet(vector<int>& root,vector<int>& rank,int x, int y) {
+    int rootX = find(root,x);
+    int rootY = find(root,y);
+    if (rootX != rootY) {
+        if (rank[rootX] >= rank[rootY]) {
+            root[rootY] = rootX;
+            rank[rootX] += rank[rootY];
+        } else {
+            root[rootX] = rootY;
+            rank[rootY] += rank[rootX];
+        }
+    }
+}
+
+-------------------------------------------------------
+
+// prime facters
+
+const ll N=1e5+5;
+vector<vector<ll>> factors(N);
+bool prime[N];
+
+void primesFactor(){
+    memset(prime, true, sizeof(prime));
+
+    for(ll i=2; i<N; i++){
+        if(prime[i]){
+            for(ll j = 2*i; j<N; j+=i){
+                factors[j].pb(i);
+                prime[j] = false;
+            }
+        }
+    }
+}
+

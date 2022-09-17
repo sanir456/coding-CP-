@@ -1,0 +1,14 @@
+1.  remove element from left and right end of array. you have to remove k element such that ramaning array sum is maximum.
+
+Solution: prefix sum with sliding window.
+T(n) = O(n)
+
+
+2. we have stream of interger. in every ith integer give minimum absulute differance of piar from any integer of 1 to ith integer.
+
+Solution: Order set
+          -> store cuurentMinDiff. 
+          -> get ith itger order let say o1. (logn)
+          -> get o1-1th and o1+1th element ans get min diff. (logn)
+          -> update currentMinDiff. (1)
+T(n) = O(n(longn + logn))
